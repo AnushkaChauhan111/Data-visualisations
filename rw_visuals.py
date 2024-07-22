@@ -22,9 +22,10 @@ def random_walk(n_steps):
 x_values, y_values = random_walk(5000)
 
 # Plot the random walk
-plt.figure(figsize=(10, 6))
+#plt.figure(figsize=(10, 6))
 point_numbers = list(range(len(x_values)))
-plt.scatter(x_values, y_values, c=point_numbers, cmap='viridis', edgecolor='none', s=20)
+fig,ax = plt.subplots()
+ax.plot(x_values, y_values)
 plt.title('2D Random Walk')
 plt.xlabel('X Position')
 plt.ylabel('Y Position')
