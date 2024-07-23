@@ -8,14 +8,16 @@ class Die:
     def roll(self):
         return randint(1,self.num_sides+1)
 
-values = []
-for x in range(100):
-    die_1 = Die(6)
-    value = die_1.roll()
-    values.append(value)
+die_1 = Die(8)
+die_2 = Die(8)
+max_result = die_1.num_sides + die_2.num_sides
+sum = []
+for x in range(1000):
+    ret = die_1.roll()+die_2.roll()
+    sum.append(ret)
 
-frequencies = []
-for x in range(1,die_1.num_sides+1):
-    freq = values.count(x)
-    frequencies.append(freq)
-print(frequencies)
+rep = []
+for x in range(2,max_result+1):
+    freq = sum.count(x)
+    rep.append(freq)
+print(rep)
