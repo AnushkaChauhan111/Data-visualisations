@@ -1,5 +1,6 @@
 import plotly.graph_objects as go
 from random import randint
+import plotly.offline
 
 class Die:
     def __init__(self,num_sides=6):
@@ -20,4 +21,10 @@ rep = []
 for x in range(2,max_result+1):
     freq = sum.count(x)
     rep.append(freq)
-print(rep)
+
+data = [go.Bar(x=sum,y=rep)]
+x_axis_config = {'title': 'Result', 'dtick': 1}
+y_axis_config = {'title': 'Frequency of Result'}
+my_layout = go.Layout(title='Results of rolling a D8 and a D8 1000 times',
+ xaxis=x_axis_config, yaxis=y_axis_config)
+plotly.offline.plot({'data': data, 'layout': my_layout}, filename='d8_d8.html')
