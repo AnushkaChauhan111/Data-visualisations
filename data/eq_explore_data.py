@@ -1,4 +1,6 @@
 import json
+from plotly.graph_objs import Scattergeo, Layout
+from plotly import offline
 filename = "data/all_hour.geojson"
 mags,lons,lats = [],[],[]
 with open(filename) as f:
@@ -11,5 +13,7 @@ with open(filename) as f:
         lat = x['geometry']['coordinates'][1]
         lons.append(lon)
         lats.append(lat)
-    print(mags)
-    print(lats)
+data = [Scattergeo(lon=lons, lat=lats)]
+my_layout = Layout(title='Global Earthquakes')
+fig = {'data': data, 'layout': my_layout}
+offline.plot(fig, filename='global_earthquakes.html')
