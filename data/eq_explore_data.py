@@ -13,7 +13,7 @@ with open(filename) as f:
         lat = x['geometry']['coordinates'][1]
         lons.append(lon)
         lats.append(lat)
-data = [Scattergeo(lon=lons, lat=lats)]
+data = [Scattergeo(lon=lons, lat=lats,fillcolor='red',marker={'size' : [5*mag for mag in mags],'color':mags,'colorscale':'solar','reversescale':True,'colorbar': {'title': 'Magnitude'}})]
 my_layout = Layout(title='Global Earthquakes')
 fig = {'data': data, 'layout': my_layout}
 offline.plot(fig, filename='global_earthquakes.html')
